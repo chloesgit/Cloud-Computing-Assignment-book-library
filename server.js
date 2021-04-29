@@ -123,7 +123,7 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Get the book ID and new information of book from the request parameters
    */
-  const bookId = ObjectID(req.params.id);
+  const bookId = bookId(req.params.id);
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
 
