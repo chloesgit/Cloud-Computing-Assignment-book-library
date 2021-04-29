@@ -11,7 +11,7 @@ app.use(express.static(__dirname + "/public"));
 /************
  * DATABASE *
  ************/
-
+let ObjectID = require("mongodb").ObjectID;
 const db = require("./models");
 const BooksModel = require("./models/books");
 
@@ -123,10 +123,9 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Get the book ID and new information of book from the request parameters
    */
-  const bookId = req.params.id;
+  const bookId = ObjectID(req.params.id);
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
-c
   /*
    * TODO: use the books model and find using the bookId and update the book information
    */
@@ -144,7 +143,7 @@ c
     language: bookNewData.language,
   };
   console.log(updatedBookInfo);
-  BooksModel.updateOne({ _id: bookId},  updatedBookInfo );
+  BooksModel.updateOne({ _id: bookId }, updatedBookInfo);
 
   res.json(updatedBookInfo);
 });
