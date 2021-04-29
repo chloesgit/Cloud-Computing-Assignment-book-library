@@ -133,8 +133,8 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Send the updated book information as a JSON object
    */
-  console.log(bookNewData)
-  console.log(bookNewData.title)
+  console.log(bookNewData);
+  console.log(bookNewData.title);
   var updatedBookInfo = {
     title: bookNewData.title,
     author: bookNewData.author,
@@ -143,8 +143,8 @@ app.put("/api/books/:id", (req, res) => {
     rating: bookNewData.rating,
     language: bookNewData.language,
   };
-  console.log(updatedBookInfo)
-  BooksModel.updateOne({ _id: bookId }, $set:{updatedBookInfo});
+  console.log(updatedBookInfo);
+  BooksModel.updateOne({ _id: bookId }, { $set: { updatedBookInfo } });
 
   res.json(updatedBookInfo);
 });
