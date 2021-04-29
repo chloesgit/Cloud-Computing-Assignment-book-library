@@ -140,12 +140,12 @@ app.put("/api/books/:id", (req, res) => {
     rating: bookNewData.rating,
     language: bookNewData.language,
   };
-  console.log(updatedBookInfo)
+  console.log(updatedBookInfo);
   BooksModel.updateOne({ _id: bookId }, updatedBookInfo, (err, res) => {
-    res.json(updatedBookInfo);
+    if (err) return console.error(err);
+    console.log("ok");
   });
-
-
+  res.json(updatedBookInfo);
 });
 /*
  * Delete a book based upon the specified ID
