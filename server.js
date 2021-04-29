@@ -114,14 +114,16 @@ app.put('/api/books/:id', (req, res) => {
   const bookId = req.params.id;
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
-
+  
   /*
    * TODO: use the books model and find using the bookId and update the book information
    */
   /*
    * Send the updated book information as a JSON object
    */
-  var updatedBookInfo = {};
+  var updatedBookInfo = {"title":req.title, "author": req.author, "releaseDate":req.releaseDate, "genre" : req.genre, "rating": req.rating, "language": req.language};
+  db.BooksModel.update({"id" : bookId},{$set : updatedBookInfo});
+
   res.json(updatedBookInfo);
 });
 /*
