@@ -123,7 +123,7 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Get the book ID and new information of book from the request parameters
    */
-  const bookId = req.params.id;
+  const bookId = ObjectID(req.params.id);
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
 
@@ -144,7 +144,7 @@ app.put("/api/books/:id", (req, res) => {
     language: bookNewData.language,
   };
   console.log(updatedBookInfo);
-  BooksModel.updateOne({ _id: bookId }, { $set: { updatedBookInfo } });
+  BooksModel.updateOne({ _id: bookId),  updatedBookInfo );
 
   res.json(updatedBookInfo);
 });
