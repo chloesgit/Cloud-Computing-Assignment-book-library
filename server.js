@@ -67,18 +67,18 @@ app.get('/api/profile', (req, res) => {
 /*
  * Get All books information
  */
-// app.get('/api/books/', (req, res) => {
-//   /*
-//    * use the books model and query to mongo database to get all objects
-//    */
-//   db.books.find({}, function (err, books) {
-//     if (err) throw err;
-//     /*
-//      * return the object as array of json values
-//      */
-//     res.json(books);
-//   });
-// });
+app.get('/api/books/', (req, res) => {
+  /*
+   * use the books model and query to mongo database to get all objects
+   */
+  db.books.find({}, function (err, books) {
+    if (err) throw err;
+    /*
+     * return the object as array of json values
+     */
+    res.json(books);
+  });
+});
 /*
  * Add a book information into database
  */
