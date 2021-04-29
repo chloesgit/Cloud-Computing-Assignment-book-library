@@ -132,7 +132,7 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Send the updated book information as a JSON object
    */
-  console.log(bookNewData);
+  console.log(bookId);
   console.log(bookNewData.title);
   var updatedBookInfo = {
     title: bookNewData.title,
