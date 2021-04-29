@@ -35,8 +35,8 @@ app.get("/api", (req, res) => {
   // TODO: Document all your api endpoints below as a simple hardcoded JSON object.
   res.json({
     message: "Welcome to my app api!",
-    documentationUrl: "", //leave this also blank for the first exercise
-    baseUrl: "", //leave this blank for the first exercise
+    documentationUrl: "35.246.186.192/api/", //leave this also blank for the first exercise
+    baseUrl: "35.246.186.192", //leave this blank for the first exercise
     endpoints: [
       {
         method: "GET",
@@ -49,11 +49,11 @@ app.get("/api", (req, res) => {
         path: "/api/books/",
         description: "Get All books information",
       },
-      { method: "POST", path: "/api/books/", description: "Add new books" },
+      { method: "POST", path: "/api/books/", description: "Add a new book },
       {
         method: "PUT",
         path: "/api/books/:id",
-        description: "Modify some book informations",
+        description: "Modify some informations of the book with a particular id",
       },
       {
         method: "DELETE",
@@ -70,11 +70,11 @@ app.get("/api/profile", (req, res) => {
     name: "Nametest",
     homeCountry: "Countest",
     degreeProgram: "Informatics", //informatics or CSE.. etc
-    email: "TEstemail",
-    deployedURLLink: "http://localhost:80/", //leave this blank for the first exercise
-    apiDocumentationURL: "/api", //leave this also blank for the first exercise
+    email: "Testemail",
+    deployedURLLink: "35.246.186.192", //leave this blank for the first exercise
+    apiDocumentationURL: "35.246.186.192/api", //leave this also blank for the first exercise
     currentCity: "Germany",
-    hobbies: [],
+    hobbies: ["cooking","music"],
   });
 });
 /*
