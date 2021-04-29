@@ -14,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
  ************/
 
 const db = require('./models');
+const BooksModel = require('./models/books');
 
 /**********
  * ROUTES *
@@ -42,7 +43,9 @@ app.get('/api', (req, res) => {
       {method: 'GET', path: '/api', description: 'Describes all available endpoints'},
       {method: 'GET', path: '/api/profile', description: 'Data about me'},
       {method: 'GET', path: '/api/books/', description: 'Get All books information'},
-      {method: 'GET', path: '/api/books/', description: 'Get All books information'},
+      {method: 'POST', path: '/api/books/', description: 'Add new books'},
+      {method: 'PUT', path: '/api/books/:id', description: 'Modify some book informations'},
+      {method: 'DELETE', path: '/api/books/:id', description: 'Delete a book according to its id'},
       // TODO: Write other API end-points description here like above
     ]
   })
@@ -50,32 +53,32 @@ app.get('/api', (req, res) => {
 // TODO:  Fill the values
 app.get('/api/profile', (req, res) => {
   res.json({
-    'name': '',
-    'homeCountry': '',
-    'degreeProgram': '',//informatics or CSE.. etc
-    'email': '',
-    'deployedURLLink': '',//leave this blank for the first exercise
-    'apiDocumentationURL': '', //leave this also blank for the first exercise
-    'currentCity': '',
-    'hobbies': []
+    'name': 'Nametest',
+    'homeCountry': 'Countest',
+    'degreeProgram': 'Informatics',//informatics or CSE.. etc
+    'email': 'TEstemail',
+    'deployedURLLink': 'http://localhost:80/',//leave this blank for the first exercise
+    'apiDocumentationURL': '/api', //leave this also blank for the first exercise
+    'currentCity': 'Germany',
+    'hobbies': [],
 
   })
 });
 /*
  * Get All books information
  */
-app.get('/api/books/', (req, res) => {
-  /*
-   * use the books model and query to mongo database to get all objects
-   */
-  db.books.find({}, function (err, books) {
-    if (err) throw err;
-    /*
-     * return the object as array of json values
-     */
-    res.json(books);
-  });
-});
+// app.get('/api/books/', (req, res) => {
+//   /*
+//    * use the books model and query to mongo database to get all objects
+//    */
+//   db.books.find({}, function (err, books) {
+//     if (err) throw err;
+//     /*
+//      * return the object as array of json values
+//      */
+//     res.json(books);
+//   });
+// });
 /*
  * Add a book information into database
  */
@@ -84,7 +87,7 @@ app.post('/api/books/', (req, res) => {
   /*
    * New Book information in req.body
    */
-  console.log(req.body);
+  console.log('t', req.body);
   /*
    * TODO: use the books model and create a new object
    * with the information in req.body
@@ -92,7 +95,12 @@ app.post('/api/books/', (req, res) => {
   /*
    * return the new book information object as json
    */
-  var newBook = {};
+  var newBook = new BooksModel({...req.body});
+  console.log('r', newBook);
+  newBook.save(function (err, newBook) {
+    if (err) return console.error(err);
+    console.log("ok");
+  });
   res.json(newBook);
 });
 
