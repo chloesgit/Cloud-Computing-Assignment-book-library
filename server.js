@@ -49,11 +49,12 @@ app.get("/api", (req, res) => {
         path: "/api/books/",
         description: "Get All books information",
       },
-      { method: "POST", path: "/api/books/", description: "Add a new book },
+      { method: "POST", path: "/api/books/", description: "Add a new book" },
       {
         method: "PUT",
         path: "/api/books/:id",
-        description: "Modify some informations of the book with a particular id",
+        description:
+          "Modify some informations of the book with a particular id",
       },
       {
         method: "DELETE",
@@ -74,7 +75,7 @@ app.get("/api/profile", (req, res) => {
     deployedURLLink: "35.246.186.192", //leave this blank for the first exercise
     apiDocumentationURL: "35.246.186.192/api", //leave this also blank for the first exercise
     currentCity: "Germany",
-    hobbies: ["cooking","music"],
+    hobbies: ["cooking", "music"],
   });
 });
 /*
