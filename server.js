@@ -144,7 +144,7 @@ app.put("/api/books/:id", (req, res) => {
     language: bookNewData.language,
   };
   console.log(updatedBookInfo)
-  BooksModel.updateOne({ _id: bookId }, updatedBookInfo);
+  BooksModel.updateOne({ _id: bookId }, $set:{updatedBookInfo});
 
   res.json(updatedBookInfo);
 });
