@@ -123,10 +123,10 @@ app.put("/api/books/:id", (req, res) => {
   /*
    * Get the book ID and new information of book from the request parameters
    */
-  const bookId = bookId(req.params.id);
+  const bookId = req.params.id;
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
-
+c
   /*
    * TODO: use the books model and find using the bookId and update the book information
    */
