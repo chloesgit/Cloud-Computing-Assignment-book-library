@@ -121,8 +121,8 @@ app.put('/api/books/:id', (req, res) => {
   /*
    * Send the updated book information as a JSON object
    */
-  var updatedBookInfo = {"title":req.title, "author": req.author, "releaseDate":req.releaseDate, "genre" : req.genre, "rating": req.rating, "language": req.language};
-  db.BooksModel.update({"id" : bookId},{$set : updatedBookInfo});
+  var updatedBookInfo = {"title":bookNewData.title, "author": bookNewData.author, "releaseDate":bookNewData.releaseDate, "genre" : bookNewData.genre, "rating": bookNewData.rating, "language": bookNewData.language};
+  db.BooksModel.update({"_id" : bookId},{$set : updatedBookInfo});
 
   res.json(updatedBookInfo);
 });
@@ -141,7 +141,13 @@ app.delete('/api/books/:id', (req, res) => {
   /*
    * Send the deleted book information as a JSON object
    */
+
   var deletedBook = {};
+
+  BooksModel.findByIdAndDelete(bookId, (err, doc)=>{
+    deletedBook = doc
+  })
+  
   res.json(deletedBook);
 });
 
